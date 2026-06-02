@@ -8,71 +8,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800;900;1000&display=swap" rel="stylesheet">
 <style>
 /* ══════════════════════════════════════════
-   LOADING SCREEN
-══════════════════════════════════════════ */
-#loader{
-  position:fixed;inset:0;z-index:9999;
-  background:#04080f;
-  display:flex;flex-direction:column;
-  align-items:center;justify-content:center;
-  gap:2.5rem;
-  transition:opacity 0.8s ease, visibility 0.8s ease;
-}
-#loader.hide{opacity:0;visibility:hidden;}
-
-.loader-terminal{
-  font-family:'Courier New',monospace;
-  font-size:0.85rem;
-  color:#4ade80;
-  text-align:left;
-  width:340px;
-  letter-spacing:0.04em;
-}
-.loader-line{
-  opacity:0;
-  transform:translateY(6px);
-  animation:line-in 0.4s forwards;
-}
-.loader-line:nth-child(1){animation-delay:0.1s;}
-.loader-line:nth-child(2){animation-delay:0.5s;}
-.loader-line:nth-child(3){animation-delay:0.9s;}
-.loader-line:nth-child(4){animation-delay:1.3s;}
-.loader-line:nth-child(5){animation-delay:1.7s;}
-.loader-line:nth-child(6){animation-delay:2.1s;color:#60a5fa;}
-@keyframes line-in{to{opacity:1;transform:translateY(0);}}
-
-.loader-quote{
-  font-family:'Nunito Sans',sans-serif;
-  font-size:1.15rem;
-  font-weight:700;
-  color:rgba(255,255,255,0.85);
-  text-align:center;
-  max-width:480px;
-  line-height:1.6;
-  padding:0 2rem;
-  opacity:0;
-  animation:fade-in 0.6s 2.5s forwards;
-}
-.loader-quote span{color:#60a5fa;}
-
-.loader-bar-wrap{
-  width:280px;height:3px;
-  background:rgba(255,255,255,0.08);
-  border-radius:2px;
-  overflow:hidden;
-  opacity:0;
-  animation:fade-in 0.4s 2.2s forwards;
-}
-.loader-bar{
-  height:100%;width:0%;
-  background:linear-gradient(90deg,#3b82f6,#7c3aed,#06b6d4);
-  border-radius:2px;
-  animation:bar-fill 1.2s 2.3s ease forwards;
-}
-@keyframes bar-fill{to{width:100%;}}
-@keyframes fade-in{to{opacity:1;}}
-
-/* ══════════════════════════════════════════
    ROOT / THEME
 ══════════════════════════════════════════ */
 :root{
@@ -96,7 +31,9 @@ body{
   overflow-x:hidden;
   background:#b8c8f5;
   perspective:1200px;
+  scroll-behavior:smooth;
 }
+body.loading{overflow:hidden;}
 
 /* ══════════════════════════════════════════
    SMOOTH 3D SCROLL EFFECT
@@ -237,7 +174,7 @@ nav{
 
 /* sidebar */
 .hero-sidebar{
-  position:absolute;left:2.2rem;top:50%;
+  position:absolute;left:2.2rem;top:42%;
   transform:translateY(-50%);
   z-index:10;
   display:flex;flex-direction:column;gap:1.3rem;
@@ -263,11 +200,12 @@ nav{
 /* hero bottom content */
 .hero-content{
   position:relative;z-index:5;
-  padding:0 3.5rem 5rem 3.5rem;
+  padding:0 3.5rem 2.75rem 3.5rem;
+  margin-top:-2rem;
 }
 .hero-roles-row{
   display:flex;justify-content:space-between;align-items:flex-end;
-  margin-bottom:2.5rem;
+  margin-bottom:1.6rem;
 }
 .hero-role-l,.hero-role-r{
   font-size:clamp(0.9rem,1.6vw,1.3rem);
@@ -581,8 +519,8 @@ footer{
   nav{padding:1rem 1.5rem;}
   .nav-links{display:none;}
   .hero-sidebar{display:none;}
-  .hero-content{padding:0 1.5rem 4rem;}
-  .hero-roles-row{flex-direction:column;gap:0.5rem;align-items:flex-start;}
+  .hero-content{padding:0 1.5rem 2.2rem;margin-top:-1rem;}
+  .hero-roles-row{flex-direction:column;gap:0.5rem;align-items:flex-start;margin-bottom:1rem;}
   .about-grid{grid-template-columns:1fr;}
   .content-section{padding:5rem 1.5rem;}
   .tl{grid-template-columns:72px 1fr;gap:0 1.5rem;}
@@ -591,26 +529,7 @@ footer{
 }
 </style>
 </head>
-<body>
-
-<!-- ══ LOADER ══ -->
-<div id="loader">
-  <div class="loader-terminal">
-    <div class="loader-line">$ whoami</div>
-    <div class="loader-line">→ <span style="color:#fff;">mursalin_molla</span> // penetration_tester</div>
-    <div class="loader-line">$ nmap -sV --script vuln target.io</div>
-    <div class="loader-line">→ scanning... [████████░░] 82%</div>
-    <div class="loader-line">→ <span style="color:#fbbf24;">open port 443/tcp</span> — initializing portfolio...</div>
-    <div class="loader-line">→ ✓ Access granted. Welcome.</div>
-  </div>
-  <div class="loader-quote">
-    "<span>The quieter you become, the more you can hear</span>" — Ram Dass<br>
-    <span style="font-size:0.85rem;opacity:0.6;color:#94a3b8;">In security: listen before you act.</span>
-  </div>
-  <div class="loader-bar-wrap">
-    <div class="loader-bar"></div>
-  </div>
-</div>
+<body class="loading">
 
 <!-- ══ NAV ══ -->
 <nav>
@@ -862,7 +781,7 @@ footer{
     <div class="modal-hd">
       <span class="modal-name">Mursalin_Molla_CV.pdf</span>
       <div class="modal-acts">
-        <a href="https://drive.google.com/file/d/1V9K4mta-VBrtrr_tF1eeqNw_VNK7r6qm/view?usp=sharing" id="cvDownloadLink" target="_blank" class="modal-dl">⬇ Download</a>
+        <a href="#" id="cvDownloadLink" download="Mursalin_Molla_CV.pdf" class="modal-dl" onclick="return false">⬇ Download</a>
         <button class="modal-x" onclick="document.getElementById('cvModal').classList.remove('open')">✕</button>
       </div>
     </div>
@@ -873,11 +792,23 @@ footer{
 </div>
 
 <script>
-/* ── LOADER ── */
+/* ── INITIAL POSITION / LOADER ── */
+if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+window.scrollTo(0, 0);
+document.documentElement.scrollTop = 0;
+document.body && (document.body.scrollTop = 0);
+
+window.addEventListener('pageshow', () => {
+  window.scrollTo(0, 0);
+});
+
 window.addEventListener('load', () => {
+  window.scrollTo(0, 0);
   setTimeout(() => {
-    document.getElementById('loader').classList.add('hide');
-    setTimeout(() => document.getElementById('loader').remove(), 900);
+    const loader = document.getElementById('loader');
+    if (loader) loader.classList.add('hide');
+    document.body.classList.remove('loading');
+    setTimeout(() => loader && loader.remove(), 900);
   }, 3800);
 });
 
@@ -928,9 +859,14 @@ function b64toBlob(b64, type) {
 let cvBlobUrl = null;
 
 function openCvModal() {
-  document.getElementById('cvIframe').src = "https://drive.google.com/file/d/1V9K4mta-VBrtrr_tF1eeqNw_VNK7r6qm/preview";
-  document.getElementById('cvDownloadLink').href = "https://drive.google.com/file/d/1V9K4mta-VBrtrr_tF1eeqNw_VNK7r6qm/view?usp=sharing";
-  document.getElementById('cvDownloadLink').onclick = null;
+  if (!cvBlobUrl) {
+    const blob = b64toBlob(CV_B64, 'application/pdf');
+    cvBlobUrl = URL.createObjectURL(blob);
+    document.getElementById('cvIframe').src = cvBlobUrl;
+    const dl = document.getElementById('cvDownloadLink');
+    dl.href = cvBlobUrl;
+    dl.onclick = null;
+  }
   document.getElementById('cvModal').classList.add('open');
 }
 

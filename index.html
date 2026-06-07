@@ -6,7 +6,105 @@
 <title>Mursalin Molla — Penetration Tester</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800;900;1000&display=swap" rel="stylesheet">
-<style>
+<style> /* --- PRELOADER STYLES --- */
+body { overflow: hidden; }
+body.loaded { overflow-y: auto; }
+
+/* ── Preloader overlay ── */
+#preloader {
+    position: fixed;
+    inset: 0;
+    background: #000;
+    z-index: 999999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    transition: opacity 0.9s ease, visibility 0.9s ease;
+}
+
+/* ── Dot spinner (Image 2 style) ── */
+.pl-dots {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    margin-bottom: 48px;
+}
+.pl-dots span {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #fff;
+    transform-origin: 40px 40px;
+    animation: dotFade 1.2s linear infinite;
+}
+.pl-dots span:nth-child(1)  { transform: rotate(0deg)   translate(30px); animation-delay: 0s; }
+.pl-dots span:nth-child(2)  { transform: rotate(30deg)  translate(30px); animation-delay: -1.1s; }
+.pl-dots span:nth-child(3)  { transform: rotate(60deg)  translate(30px); animation-delay: -1.0s; }
+.pl-dots span:nth-child(4)  { transform: rotate(90deg)  translate(30px); animation-delay: -0.9s; }
+.pl-dots span:nth-child(5)  { transform: rotate(120deg) translate(30px); animation-delay: -0.8s; }
+.pl-dots span:nth-child(6)  { transform: rotate(150deg) translate(30px); animation-delay: -0.7s; }
+.pl-dots span:nth-child(7)  { transform: rotate(180deg) translate(30px); animation-delay: -0.6s; }
+.pl-dots span:nth-child(8)  { transform: rotate(210deg) translate(30px); animation-delay: -0.5s; }
+.pl-dots span:nth-child(9)  { transform: rotate(240deg) translate(30px); animation-delay: -0.4s; }
+.pl-dots span:nth-child(10) { transform: rotate(270deg) translate(30px); animation-delay: -0.3s; }
+.pl-dots span:nth-child(11) { transform: rotate(300deg) translate(30px); animation-delay: -0.2s; }
+.pl-dots span:nth-child(12) { transform: rotate(330deg) translate(30px); animation-delay: -0.1s; }
+
+@keyframes dotFade {
+    0%, 39%  { opacity: 0.15; transform-origin: 40px 40px; }
+    40%      { opacity: 1; }
+    100%     { opacity: 0.15; }
+}
+
+/* ── "LOADING ..." text ── */
+.pl-loading-label {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    color: rgba(255,255,255,0.7);
+    text-transform: uppercase;
+    margin-bottom: 36px;
+}
+
+/* ── Progress bar (Image 1 style) ── */
+.pl-bar-wrap {
+    width: min(520px, 82vw);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+}
+.pl-bar-track {
+    width: 100%;
+    height: 8px;
+    background: rgba(255,255,255,0.12);
+    border-radius: 999px;
+    overflow: hidden;
+}
+.pl-bar-fill {
+    height: 100%;
+    width: 0%;
+    background: #fff;
+    border-radius: 999px;
+    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.pl-pct-label {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: rgba(255,255,255,0.65);
+}
+
+body.loaded #preloader {
+    opacity: 0;
+    visibility: hidden;
+}
+
 
 
 /* ══════════════════════════════════════════
@@ -530,7 +628,23 @@ footer{
 </head>
 <body>
 
-
+<!-- ══ PRELOADER ══ -->
+<div id="preloader">
+  <!-- Circular dot spinner -->
+  <div class="pl-dots">
+    <span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span>
+  </div>
+  <!-- Loading label -->
+  <div class="pl-loading-label">Loading ...</div>
+  <!-- Progress bar -->
+  <div class="pl-bar-wrap">
+    <div class="pl-bar-track">
+      <div class="pl-bar-fill" id="plBar"></div>
+    </div>
+    <div class="pl-pct-label" id="plPct">0 %</div>
+  </div>
 </div>
 
 <!-- ══ NAV ══ -->
@@ -853,6 +967,34 @@ function openCvModal() {
 document.getElementById('cvModal').addEventListener('click', function(e){
   if(e.target===this) this.classList.remove('open');
 });
+</script>
+<script>
+(function() {
+  var bar = document.getElementById('plBar');
+  var pct = document.getElementById('plPct');
+  var steps = [
+    {to: 20, delay: 200},
+    {to: 40, delay: 550},
+    {to: 60, delay: 900},
+    {to: 78, delay: 1250},
+    {to: 91, delay: 1600},
+    {to: 100, delay: 1950}
+  ];
+  steps.forEach(function(s) {
+    setTimeout(function() {
+      bar.style.width = s.to + '%';
+      pct.textContent = s.to + ' %';
+    }, s.delay);
+  });
+  window.addEventListener('load', function() {
+    var minTime = 2400;
+    var elapsed = performance.now();
+    var wait = Math.max(0, minTime - elapsed);
+    setTimeout(function() {
+      document.body.classList.add('loaded');
+    }, wait);
+  });
+})();
 </script>
 </body>
 </html>

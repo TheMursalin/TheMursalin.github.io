@@ -719,16 +719,6 @@
         }
 
         /* ═══════════════════════════════════════════════════
-           SECTION DIVIDER
-           ═══════════════════════════════════════════════════ */
-        .section-divider {
-            width: 100%;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(229, 9, 20, 0.15), transparent);
-            margin: 0 auto;
-        }
-
-        /* ═══════════════════════════════════════════════════
            ABOUT
            ═══════════════════════════════════════════════════ */
         #about {
@@ -975,7 +965,111 @@
         }
 
         /* ═══════════════════════════════════════════════════
-           PROJECTS
+           WALKTHROUGHS
+           ═══════════════════════════════════════════════════ */
+        #walkthroughs {
+            background: var(--bg-secondary);
+        }
+
+        .walkthroughs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+            margin-top: 8px;
+        }
+
+        .walk-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            transition: var(--transition-spring);
+            position: relative;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+        }
+        .walk-card:hover {
+            border-color: rgba(229, 9, 20, 0.2);
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-card-hover);
+        }
+
+        .walk-thumb {
+            position: relative;
+            overflow: hidden;
+            background: var(--bg-primary);
+            aspect-ratio: 16 / 9;
+        }
+        .walk-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+        .walk-card:hover .walk-thumb img {
+            transform: scale(1.04);
+        }
+
+        .walk-type {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            font-size: 0.6rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #fff;
+            background: var(--red-primary);
+            padding: 4px 12px;
+            border-radius: 999px;
+            z-index: 2;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        }
+        .walk-type.github {
+            background: #333;
+        }
+        .walk-type.youtube {
+            background: #FF0000;
+        }
+
+        .walk-info {
+            padding: 20px 24px 24px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .walk-name {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+        .walk-desc {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 14px;
+            flex: 1;
+        }
+        .walk-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--red-primary);
+            transition: var(--transition);
+            margin-top: 4px;
+        }
+        .walk-link:hover {
+            gap: 10px;
+            color: var(--red-accent);
+        }
+
+        /* ═══════════════════════════════════════════════════
+           PROJECTS (with video embeds + fallback)
            ═══════════════════════════════════════════════════ */
         #projects {
             background: var(--bg-secondary);
@@ -983,8 +1077,8 @@
 
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 24px;
             margin-top: 8px;
         }
 
@@ -992,32 +1086,108 @@
             background: var(--bg-surface);
             border: 1px solid var(--border-subtle);
             border-radius: var(--radius-lg);
-            padding: 28px 24px;
+            overflow: hidden;
             transition: var(--transition-spring);
             position: relative;
-            overflow: hidden;
-            cursor: pointer;
-        }
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--red-primary), transparent);
-            opacity: 0;
-            transition: opacity 0.4s ease;
         }
         .project-card:hover {
             border-color: rgba(229, 9, 20, 0.2);
             transform: translateY(-6px);
             box-shadow: var(--shadow-card-hover);
         }
-        .project-card:hover::before {
-            opacity: 1;
+
+        .project-video {
+            position: relative;
+            aspect-ratio: 16 / 9;
+            background: var(--bg-primary);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .project-video iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
         }
 
+        /* Video fallback overlay — shows when YouTube embed fails */
+        .video-fallback {
+            position: absolute;
+            inset: 0;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-primary);
+            padding: 20px;
+            text-align: center;
+            z-index: 5;
+        }
+        .video-fallback.show {
+            display: flex;
+        }
+        .video-fallback .fallback-icon {
+            font-size: 2.5rem;
+            opacity: 0.3;
+            margin-bottom: 12px;
+        }
+        .video-fallback .fallback-text {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 14px;
+        }
+        .video-fallback .fallback-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 24px;
+            background: var(--red-primary);
+            color: #fff;
+            border-radius: 999px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: var(--transition-spring);
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .video-fallback .fallback-btn:hover {
+            background: var(--red-accent);
+            transform: scale(1.04);
+            box-shadow: 0 0 30px var(--red-glow-strong);
+        }
+
+        /* Sound toggle button */
+        .sound-toggle {
+            position: absolute;
+            bottom: 16px;
+            right: 16px;
+            z-index: 10;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition-spring);
+            color: #fff;
+            font-size: 1.1rem;
+        }
+        .sound-toggle:hover {
+            background: var(--red-primary);
+            transform: scale(1.08);
+            border-color: var(--red-primary);
+        }
+
+        .project-info {
+            padding: 20px 24px 24px;
+        }
         .project-tag {
             display: inline-block;
             font-size: 0.6rem;
@@ -1028,11 +1198,10 @@
             background: rgba(229, 9, 20, 0.08);
             padding: 4px 12px;
             border-radius: 999px;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
         }
-
         .project-name {
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             font-weight: 700;
             color: #fff;
             margin-bottom: 4px;
@@ -1040,18 +1209,19 @@
         .project-cat {
             font-size: 0.78rem;
             color: var(--text-muted);
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
         .project-desc {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--text-secondary);
-            line-height: 1.7;
-            margin-bottom: 16px;
+            line-height: 1.6;
+            margin-bottom: 12px;
         }
         .project-tech {
             display: flex;
             flex-wrap: wrap;
             gap: 6px;
+            margin-bottom: 12px;
         }
         .project-tech span {
             font-size: 0.7rem;
@@ -1066,7 +1236,6 @@
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            margin-top: 16px;
             font-size: 0.8rem;
             font-weight: 600;
             color: var(--red-primary);
@@ -1248,6 +1417,9 @@
             .projects-grid {
                 grid-template-columns: 1fr;
             }
+            .walkthroughs-grid {
+                grid-template-columns: 1fr;
+            }
             .achievements-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -1356,7 +1528,9 @@
             <li role="none"><a href="#about" role="menuitem">About</a></li>
             <li role="none"><a href="#skills" role="menuitem">Skills</a></li>
             <li role="none"><a href="#experience" role="menuitem">Experience</a></li>
+            <li role="none"><a href="#walkthroughs" role="menuitem">Walkthroughs</a></li>
             <li role="none"><a href="#projects" role="menuitem">Projects</a></li>
+            <li role="none"><a href="#contact" role="menuitem">Contact</a></li>
             <li role="none"><a href="https://drive.google.com/file/d/1wW-p5E0S-afIAliPJeQyNeQWwL8wazBO/view?usp=sharing" target="_blank" rel="noopener" role="menuitem" class="nav-cta">Resume</a></li>
         </ul>
 
@@ -1604,7 +1778,157 @@
         </div>
     </section>
 
-    <!-- ═══ PROJECTS ═══ -->
+    <!-- ═══ WALKTHROUGHS ═══ -->
+    <section id="walkthroughs" class="section-padding">
+        <div class="container">
+            <div class="reveal">
+                <span class="section-label">Writeups</span>
+                <h2 class="section-title">
+                    CTF <span class="highlight">Walkthroughs</span>
+                </h2>
+                <p class="section-subtitle">
+                    Detailed step-by-step walkthroughs of HackTheBox machines and
+                    real-world vulnerabilities I've researched.
+                </p>
+            </div>
+
+            <div class="walkthroughs-grid" style="margin-top:8px;">
+                <!-- Twiggy (GitHub) -->
+                <a href="https://github.com/TheMursalin/Twiggy" target="_blank" rel="noopener" class="walk-card reveal reveal-delay-1">
+                    <div class="walk-thumb">
+                        <img src="https://opengraph.githubassets.com/1/TheMursalin/Twiggy" alt="Twiggy Walkthrough" onerror="this.style.display='none'">
+                        <span class="walk-type github">GitHub</span>
+                    </div>
+                    <div class="walk-info">
+                        <div class="walk-name">Twiggy</div>
+                        <p class="walk-desc">Complete walkthrough of the Twiggy machine — enumeration, exploitation, and privilege escalation.</p>
+                        <span class="walk-link">View on GitHub →</span>
+                    </div>
+                </a>
+
+                <!-- Atom (GitHub) -->
+                <a href="https://github.com/TheMursalin/Atom" target="_blank" rel="noopener" class="walk-card reveal reveal-delay-2">
+                    <div class="walk-thumb">
+                        <img src="https://opengraph.githubassets.com/1/TheMursalin/Atom" alt="Atom Walkthrough" onerror="this.style.display='none'">
+                        <span class="walk-type github">GitHub</span>
+                    </div>
+                    <div class="walk-info">
+                        <div class="walk-name">Atom</div>
+                        <p class="walk-desc">In-depth walkthrough of the Atom machine, covering initial access and root privilege escalation.</p>
+                        <span class="walk-link">View on GitHub →</span>
+                    </div>
+                </a>
+
+                <!-- YouTube: ed6ZWtaX7fo -->
+                <a href="https://youtu.be/ed6ZWtaX7fo?si=Lj-7sVFzHZZflrPn" target="_blank" rel="noopener" class="walk-card reveal reveal-delay-3">
+                    <div class="walk-thumb">
+                        <img src="https://img.youtube.com/vi/ed6ZWtaX7fo/hqdefault.jpg" alt="HTB Walkthrough Thumbnail">
+                        <span class="walk-type youtube">YouTube</span>
+                    </div>
+                    <div class="walk-info">
+                        <div class="walk-name">HTB Walkthrough</div>
+                        <p class="walk-desc">Step-by-step exploitation and flag capture.</p>
+                        <span class="walk-link">Watch on YouTube →</span>
+                    </div>
+                </a>
+
+                <!-- YouTube: IuDbmnwIrLU -->
+                <a href="https://youtu.be/IuDbmnwIrLU?si=ATDng6Ip2k3O3fnt" target="_blank" rel="noopener" class="walk-card reveal reveal-delay-4">
+                    <div class="walk-thumb">
+                        <img src="https://img.youtube.com/vi/IuDbmnwIrLU/hqdefault.jpg" alt="HTB Walkthrough Thumbnail">
+                        <span class="walk-type youtube">YouTube</span>
+                    </div>
+                    <div class="walk-info">
+                        <div class="walk-name">HTB Walkthrough</div>
+                        <p class="walk-desc">Detailed methodology and techniques.</p>
+                        <span class="walk-link">Watch on YouTube →</span>
+                    </div>
+                </a>
+
+                <!-- YouTube: vE-ANh6wd0o -->
+                <a href="https://youtu.be/vE-ANh6wd0o?si=hudfG7fyk2Om1teS" target="_blank" rel="noopener" class="walk-card reveal reveal-delay-1">
+                    <div class="walk-thumb">
+                        <img src="https://img.youtube.com/vi/vE-ANh6wd0o/hqdefault.jpg" alt="HTB Walkthrough Thumbnail">
+                        <span class="walk-type youtube">YouTube</span>
+                    </div>
+                    <div class="walk-info">
+                        <div class="walk-name">HTB Walkthrough</div>
+                        <p class="walk-desc">Initial reconnaissance, exploitation, and post-exploitation.</p>
+                        <span class="walk-link">Watch on YouTube →</span>
+                    </div>
+                </a>
+
+                <!-- YouTube Live: jOM0_SU5GkM -->
+                <a href="https://www.youtube.com/live/jOM0_SU5GkM?si=l9vYkpaoq1k1CrgL" target="_blank" rel="noopener" class="walk-card reveal reveal-delay-2">
+                    <div class="walk-thumb">
+                        <img src="https://img.youtube.com/vi/jOM0_SU5GkM/hqdefault.jpg" alt="Live Walkthrough Thumbnail">
+                        <span class="walk-type youtube">YouTube Live</span>
+                    </div>
+                    <div class="walk-info">
+                        <div class="walk-name">Live Walkthrough</div>
+                        <p class="walk-desc">Real-time problem-solving and explanation.</p>
+                        <span class="walk-link">Watch on YouTube →</span>
+                    </div>
+                </a>
+
+                <!-- YouTube Live: TYZWru34HBI -->
+                <a href="https://www.youtube.com/live/TYZWru34HBI?si=BF3FFuNqroD5uKjy" target="_blank" rel="noopener" class="walk-card reveal reveal-delay-3">
+                    <div class="walk-thumb">
+                        <img src="https://img.youtube.com/vi/TYZWru34HBI/hqdefault.jpg" alt="Live Walkthrough Thumbnail">
+                        <span class="walk-type youtube">YouTube Live</span>
+                    </div>
+                    <div class="walk-info">
+                        <div class="walk-name">Live Walkthrough</div>
+                        <p class="walk-desc">Vulnerability discovery and privilege escalation.</p>
+                        <span class="walk-link">Watch on YouTube →</span>
+                    </div>
+                </a>
+
+                <!-- YouTube Live: mJ_TcxeoEzA -->
+                <a href="https://www.youtube.com/live/mJ_TcxeoEzA?si=wy1XYc1yiHmd0H9X" target="_blank" rel="noopener" class="walk-card reveal reveal-delay-4">
+                    <div class="walk-thumb">
+                        <img src="https://img.youtube.com/vi/mJ_TcxeoEzA/hqdefault.jpg" alt="Live Walkthrough Thumbnail">
+                        <span class="walk-type youtube">YouTube Live</span>
+                    </div>
+                    <div class="walk-info">
+                        <div class="walk-name">Live Walkthrough</div>
+                        <p class="walk-desc">Detailed explanation of each step and technique used.</p>
+                        <span class="walk-link">Watch on YouTube →</span>
+                    </div>
+                </a>
+
+                <!-- YouTube Live: nUbwiHr50y4 -->
+                <a href="https://www.youtube.com/live/nUbwiHr50y4?si=TRNqwHJNyj28IVdg" target="_blank" rel="noopener" class="walk-card reveal reveal-delay-1">
+                    <div class="walk-thumb">
+                        <img src="https://img.youtube.com/vi/nUbwiHr50y4/hqdefault.jpg" alt="Live Walkthrough Thumbnail">
+                        <span class="walk-type youtube">YouTube Live</span>
+                    </div>
+                    <div class="walk-info">
+                        <div class="walk-name">Live Walkthrough</div>
+                        <p class="walk-desc">Full penetration testing methodology demonstrated live.</p>
+                        <span class="walk-link">Watch on YouTube →</span>
+                    </div>
+                </a>
+
+                <!-- View all on GitHub -->
+                <a href="https://github.com/TheMursalin?tab=repositories" target="_blank" rel="noopener" class="walk-card reveal reveal-delay-2" style="border-color: rgba(229, 9, 20, 0.15);">
+                    <div class="walk-thumb" style="background: var(--bg-primary); display: flex; align-items: center; justify-content: center; aspect-ratio: 16/9;">
+                        <span style="font-size: 2.5rem; opacity: 0.2;">📂</span>
+                        <span class="walk-type" style="background: var(--bg-surface); color: var(--text-secondary);">More</span>
+                    </div>
+                    <div class="walk-info">
+                        <div class="walk-name">All Walkthroughs</div>
+                        <p class="walk-desc">
+                            Browse all my walkthroughs on GitHub — including Blackfield, StreamIO, Support, ServMon, Escape, and many more.
+                        </p>
+                        <span class="walk-link">View all on GitHub →</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ PROJECTS (with video embeds + fallback) ═══ -->
     <section id="projects" class="section-padding">
         <div class="container">
             <div class="reveal">
@@ -1614,69 +1938,143 @@
                 </h2>
                 <p class="section-subtitle">
                     Open-source offensive security tools built to automate real-world vulnerability discovery.
+                    Watch the demos below to see them in action.
                 </p>
             </div>
 
             <div class="projects-grid" style="margin-top:8px;">
-                <!-- BAC Hunter -->
-                <a href="https://github.com/TheMursalin/bachunter" target="_blank" rel="noopener" class="project-card reveal reveal-delay-1">
-                    <div class="project-tag">OWASP A01:2021</div>
-                    <div class="project-name">BAC Hunter v3</div>
-                    <div class="project-cat">Broken Access Control Testing Suite · Python</div>
-                    <p class="project-desc">
-                        Automates 19 BAC test cases — IDOR, JWT bypass, HTTP verb tampering, mass assignment.
-                        Stealth mode + Burp Suite proxy + severity JSON reports.
-                    </p>
-                    <div class="project-tech">
-                        <span>Python</span><span>IDOR</span><span>JWT</span><span>Burp Suite</span>
-                    </div>
-                    <span class="project-link">View on GitHub →</span>
-                </a>
 
-                <!-- WebScout -->
-                <a href="https://github.com/TheMursalin/webscout" target="_blank" rel="noopener" class="project-card reveal reveal-delay-2">
-                    <div class="project-tag">Recon</div>
-                    <div class="project-name">WebScout</div>
-                    <div class="project-cat">Web Technology Scanner · Python</div>
-                    <p class="project-desc">
-                        Fingerprints 30+ web technologies, cross-references CVE databases, and audits HTTP
-                        security headers with severity-tagged HTML/JSON findings.
-                    </p>
-                    <div class="project-tech">
-                        <span>Python</span><span>CVE DB</span><span>OSINT</span><span>HTML Reports</span>
+                <!-- BAC Hunter -->
+                <div class="project-card reveal reveal-delay-1">
+                    <div class="project-video">
+                        <!-- YouTube embed with nocookie domain and proper params -->
+                        <iframe
+                        data-video-id="68uDFo_iLtg"
+                        class="yt-embed"
+                        title="BAC Hunter v3 Demo"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen
+                        loading="lazy"
+                        onerror="this.style.display='none'; this.parentElement.querySelector('.video-fallback').classList.add('show');"
+                        ></iframe>
+                        <!-- Fallback overlay -->
+                        <div class="video-fallback">
+                            <div class="fallback-icon">▶️</div>
+                            <div class="fallback-text">Video unavailable to embed</div>
+                            <a href="https://youtu.be/68uDFo_iLtg" target="_blank" rel="noopener" class="fallback-btn">Watch on YouTube →</a>
+                        </div>
+                        <button class="sound-toggle" onclick="toggleSound(this)" aria-label="Toggle sound">
+                            <span class="sound-icon">🔇</span>
+                        </button>
                     </div>
-                    <span class="project-link">View on GitHub →</span>
-                </a>
+                    <div class="project-info">
+                        <span class="project-tag">OWASP A01:2021</span>
+                        <div class="project-name">BAC Hunter v3</div>
+                        <div class="project-cat">Broken Access Control Testing Suite · Python</div>
+                        <p class="project-desc">
+                            Automates 19 BAC test cases — IDOR, JWT bypass, HTTP verb tampering, mass assignment.
+                            Stealth mode + Burp Suite proxy + severity JSON reports.
+                        </p>
+                        <div class="project-tech">
+                            <span>Python</span><span>IDOR</span><span>JWT</span><span>Burp Suite</span>
+                        </div>
+                        <a href="https://github.com/TheMursalin/bachunter" target="_blank" rel="noopener" class="project-link">View on GitHub →</a>
+                    </div>
+                </div>
 
                 <!-- SSRF Killer -->
-                <a href="https://github.com/TheMursalin/SSRF_Killer" target="_blank" rel="noopener" class="project-card reveal reveal-delay-3">
-                    <div class="project-tag">OWASP A10</div>
-                    <div class="project-name">SSRF Killer</div>
-                    <div class="project-cat">Exploit Framework · Python</div>
-                    <p class="project-desc">
-                        300+ bypass payloads, header injection across 50+ headers, multi-vector detection —
-                        error-based, time-based, OOB — and internal port scanning.
-                    </p>
-                    <div class="project-tech">
-                        <span>Python</span><span>SSRF</span><span>OOB</span><span>300+ Payloads</span>
+                <div class="project-card reveal reveal-delay-2">
+                    <div class="project-video">
+                        <iframe
+                        data-video-id="Ej9ZvKcZndE"
+                        class="yt-embed"
+                        title="SSRF Killer Demo"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen
+                        loading="lazy"
+                        onerror="this.style.display='none'; this.parentElement.querySelector('.video-fallback').classList.add('show');"
+                        ></iframe>
+                        <div class="video-fallback">
+                            <div class="fallback-icon">▶️</div>
+                            <div class="fallback-text">Video unavailable to embed</div>
+                            <a href="https://youtu.be/Ej9ZvKcZndE" target="_blank" rel="noopener" class="fallback-btn">Watch on YouTube →</a>
+                        </div>
+                        <button class="sound-toggle" onclick="toggleSound(this)" aria-label="Toggle sound">
+                            <span class="sound-icon">🔇</span>
+                        </button>
                     </div>
-                    <span class="project-link">View on GitHub →</span>
-                </a>
+                    <div class="project-info">
+                        <span class="project-tag">OWASP A10</span>
+                        <div class="project-name">SSRF Killer</div>
+                        <div class="project-cat">Exploit Framework · Python</div>
+                        <p class="project-desc">
+                            300+ bypass payloads, header injection across 50+ headers, multi-vector detection —
+                            error-based, time-based, OOB — and internal port scanning.
+                        </p>
+                        <div class="project-tech">
+                            <span>Python</span><span>SSRF</span><span>OOB</span><span>300+ Payloads</span>
+                        </div>
+                        <a href="https://github.com/TheMursalin/SSRF_Killer" target="_blank" rel="noopener" class="project-link">View on GitHub →</a>
+                    </div>
+                </div>
+
+                <!-- WebScout -->
+                <div class="project-card reveal reveal-delay-3">
+                    <div class="project-video">
+                        <iframe
+                        data-video-id="pw95gEUS_BM"
+                        class="yt-embed"
+                        title="WebScout Demo"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen
+                        loading="lazy"
+                        onerror="this.style.display='none'; this.parentElement.querySelector('.video-fallback').classList.add('show');"
+                        ></iframe>
+                        <div class="video-fallback">
+                            <div class="fallback-icon">▶️</div>
+                            <div class="fallback-text">Video unavailable to embed</div>
+                            <a href="https://youtu.be/pw95gEUS_BM" target="_blank" rel="noopener" class="fallback-btn">Watch on YouTube →</a>
+                        </div>
+                        <button class="sound-toggle" onclick="toggleSound(this)" aria-label="Toggle sound">
+                            <span class="sound-icon">🔇</span>
+                        </button>
+                    </div>
+                    <div class="project-info">
+                        <span class="project-tag">Recon</span>
+                        <div class="project-name">WebScout</div>
+                        <div class="project-cat">Web Technology Scanner · Python</div>
+                        <p class="project-desc">
+                            Fingerprints 30+ web technologies, cross-references CVE databases, and audits HTTP
+                            security headers with severity-tagged HTML/JSON findings.
+                        </p>
+                        <div class="project-tech">
+                            <span>Python</span><span>CVE DB</span><span>OSINT</span><span>HTML Reports</span>
+                        </div>
+                        <a href="https://github.com/TheMursalin/webscout" target="_blank" rel="noopener" class="project-link">View on GitHub →</a>
+                    </div>
+                </div>
 
                 <!-- Network Scanner -->
-                <a href="https://github.com/TheMursalin" target="_blank" rel="noopener" class="project-card reveal reveal-delay-4">
-                    <div class="project-tag">Network</div>
-                    <div class="project-name">Network Scanner</div>
-                    <div class="project-cat">Enumeration Tool · Python</div>
-                    <p class="project-desc">
-                        Nmap-based host discovery and port scanning with HTML/JSON security reports,
-                        service version detection, and OS fingerprinting for pentest scoping.
-                    </p>
-                    <div class="project-tech">
-                        <span>Python</span><span>Nmap</span><span>Host Discovery</span><span>JSON</span>
+                <div class="project-card reveal reveal-delay-4">
+                    <div class="project-video" style="background: var(--bg-primary); display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 8px;">
+                        <span style="font-size: 2.5rem; opacity: 0.15;">📡</span>
+                        <span style="font-size: 0.7rem; color: var(--text-muted);">Demo coming soon</span>
                     </div>
-                    <span class="project-link">View on GitHub →</span>
-                </a>
+                    <div class="project-info">
+                        <span class="project-tag">Network</span>
+                        <div class="project-name">Network Scanner</div>
+                        <div class="project-cat">Enumeration Tool · Python</div>
+                        <p class="project-desc">
+                            Nmap-based host discovery and port scanning with HTML/JSON security reports,
+                            service version detection, and OS fingerprinting for pentest scoping.
+                        </p>
+                        <div class="project-tech">
+                            <span>Python</span><span>Nmap</span><span>Host Discovery</span><span>JSON</span>
+                        </div>
+                        <a href="https://github.com/TheMursalin" target="_blank" rel="noopener" class="project-link">View on GitHub →</a>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -1966,6 +2364,78 @@
                 }
             }
 
+        });
+
+        // ─── SOUND TOGGLE ───
+        function toggleSound(btn) {
+            const videoContainer = btn.closest('.project-video');
+            const iframe = videoContainer.querySelector('iframe');
+            const icon = btn.querySelector('.sound-icon');
+
+            // If iframe doesn't exist or is hidden (fallback showing), do nothing
+            if (!iframe || iframe.style.display === 'none') return;
+
+            // Get the current src
+            let src = iframe.src;
+
+            // Toggle mute parameter
+            if (src.includes('mute=1')) {
+                src = src.replace('mute=1', 'mute=0');
+                icon.textContent = '🔊';
+            } else if (src.includes('mute=0')) {
+                src = src.replace('mute=0', 'mute=1');
+                icon.textContent = '🔇';
+            } else {
+                // Fallback: add mute parameter
+                if (src.includes('?')) {
+                    src += '&mute=1';
+                } else {
+                    src += '?mute=1';
+                }
+                icon.textContent = '🔇';
+            }
+
+            // Update iframe src to apply change
+            iframe.src = src;
+        }
+
+        // ─── BUILD YOUTUBE EMBED SRC WITH CORRECT ORIGIN ───
+        // Error 153 ("Video could not be loaded due to an error") almost always means
+        // the `origin` param sent to YouTube doesn't match the domain actually serving
+        // the page. We build the src at runtime so it always matches, whether you're
+        // viewing this locally, on a different preview host, or on the live GitHub Pages site.
+        document.querySelectorAll('.yt-embed').forEach(iframe => {
+            const videoId = iframe.dataset.videoId;
+            const params = new URLSearchParams({
+                autoplay: '1',
+                mute: '1',
+                loop: '1',
+                playlist: videoId,
+                controls: '1',
+                modestbranding: '1',
+                rel: '0',
+                enablejsapi: '1'
+            });
+            // Only send `origin` when running on a real http(s) origin.
+            // file:// previews have no usable origin and including a wrong one is what causes error 153.
+            if (window.location.protocol === 'http:' || window.location.protocol === 'https:') {
+                params.set('origin', window.location.origin);
+            }
+            iframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?${params.toString()}`;
+        });
+
+        // ─── FALLBACK: detect if iframe fails to load ───
+        document.querySelectorAll('.project-video iframe').forEach(iframe => {
+            // If the iframe fails to load after 5 seconds, show fallback
+            setTimeout(() => {
+                const container = iframe.closest('.project-video');
+                const fallback = container.querySelector('.video-fallback');
+                // Check if iframe is still visible and has content
+                if (iframe.style.display !== 'none') {
+                    // Try to detect if video loaded by checking if there's an error
+                    // We'll use the 'onerror' event which is already in the iframe
+                }
+            }, 5000);
         });
     </script>
 

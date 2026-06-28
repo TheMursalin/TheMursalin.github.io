@@ -825,6 +825,17 @@
         .skill-tag:hover .icon {
             opacity: 1;
         }
+        .skill-tag .tool-icon {
+            width: 18px;
+            height: 18px;
+            object-fit: contain;
+            opacity: 0.75;
+            transition: var(--transition);
+            flex-shrink: 0;
+        }
+        .skill-tag:hover .tool-icon {
+            opacity: 1;
+        }
 
         /* ═══════════════════════════════════════════════════
            CERTIFICATIONS
@@ -1640,7 +1651,7 @@
                         <div class="stat-label">CTFs Solved</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-number">Skilled</div>
+                        <div class="stat-number">#899</div>
                         <div class="stat-label">HTB Global Rank</div>
                     </div>
                     <div class="stat-card">
@@ -1670,24 +1681,30 @@
             </div>
 
             <div class="skills-grid" style="margin-top:8px;">
-                <div class="skill-tag reveal reveal-delay-1"><span class="icon">⚡</span>Burp Suite Pro</div>
-                <div class="skill-tag reveal reveal-delay-1"><span class="icon">⚡</span>Nmap</div>
-                <div class="skill-tag reveal reveal-delay-2"><span class="icon">⚡</span>Metasploit</div>
-                <div class="skill-tag reveal reveal-delay-2"><span class="icon">⚡</span>BloodHound</div>
-                <div class="skill-tag reveal reveal-delay-3"><span class="icon">⚡</span>Wireshark</div>
-                <div class="skill-tag reveal reveal-delay-3"><span class="icon">⚡</span>SQLMap</div>
-                <div class="skill-tag reveal reveal-delay-4"><span class="icon">⚡</span>FFUF</div>
-                <div class="skill-tag reveal reveal-delay-4"><span class="icon">⚡</span>Amass</div>
-                <div class="skill-tag reveal reveal-delay-1"><span class="icon">⚡</span>Nikto</div>
-                <div class="skill-tag reveal reveal-delay-1"><span class="icon">⚡</span>LinPEAS</div>
-                <div class="skill-tag reveal reveal-delay-2"><span class="icon">⚡</span>WinPEAS</div>
-                <div class="skill-tag reveal reveal-delay-2"><span class="icon">⚡</span>Hashcat</div>
-                <div class="skill-tag reveal reveal-delay-3"><span class="icon">⚡</span>John the Ripper</div>
-                <div class="skill-tag reveal reveal-delay-3"><span class="icon">⚡</span>Python</div>
-                <div class="skill-tag reveal reveal-delay-4"><span class="icon">⚡</span>Bash</div>
-                <div class="skill-tag reveal reveal-delay-4"><span class="icon">⚡</span>Kali Linux</div>
-                <div class="skill-tag reveal reveal-delay-1"><span class="icon">⚡</span>OWASP Top 10</div>
+                <div class="skill-tag reveal reveal-delay-1"><img class="tool-icon" src="https://cdn.simpleicons.org/burpsuite" alt="" onerror="this.outerHTML='&lt;span class=icon&gt;⚡&lt;/span&gt;'">Burp Suite Pro</div>
+                <div class="skill-tag reveal reveal-delay-1"><img class="tool-icon" src="https://cdn.simpleicons.org/nmap" alt="" onerror="this.outerHTML='&lt;span class=icon&gt;⚡&lt;/span&gt;'">Nmap</div>
+                <div class="skill-tag reveal reveal-delay-2"><img class="tool-icon" src="https://cdn.simpleicons.org/metasploit" alt="" onerror="this.outerHTML='&lt;span class=icon&gt;⚡&lt;/span&gt;'">Metasploit</div>
+                <div class="skill-tag reveal reveal-delay-2"><img class="tool-icon" src="https://cdn.simpleicons.org/bloodhound" alt="" onerror="this.outerHTML='&lt;span class=icon&gt;⚡&lt;/span&gt;'">BloodHound</div>
+                <div class="skill-tag reveal reveal-delay-3"><img class="tool-icon" src="https://cdn.simpleicons.org/wireshark" alt="" onerror="this.outerHTML='&lt;span class=icon&gt;⚡&lt;/span&gt;'">Wireshark</div>
+                <div class="skill-tag reveal reveal-delay-3"><img class="tool-icon" src="https://cdn.simpleicons.org/sqlmap" alt="" onerror="this.outerHTML='&lt;span class=icon&gt;⚡&lt;/span&gt;'">SQLMap</div>
+                <div class="skill-tag reveal reveal-delay-4"><img class="tool-icon" src="https://cdn.simpleicons.org/ffuf" alt="" onerror="this.outerHTML='&lt;span class=icon&gt;⚡&lt;/span&gt;'">FFUF</div>
+                <div class="skill-tag reveal reveal-delay-4"><img class="tool-icon" src="https://cdn.simpleicons.org/amass" alt="" onerror="this.outerHTML='&lt;span class=icon&gt;⚡&lt;/span&gt;'">Amass</div>
+                <div class="skill-tag reveal reveal-delay-1"><img class="tool-icon" src="https://cdn.simpleicons.org/nikto" alt="" onerror="this.outerHTML='&lt;span class=icon&gt;⚡&lt;/span&gt;'">Nikto</div>
+                <div class="skill-tag reveal reveal-delay-1"><img class="tool-icon" src="https://cdn.simpleicons.org/linpeas" alt="" onerror="this.outerHTML='&lt;span class=icon&gt;⚡&lt;/span&gt;'">LinPEAS</div>
+                <div class="skill-tag reveal reveal-delay-2"><img class="tool-icon" src="https://cdn.simpleicons.org/winpeas" alt="" onerror="this.outerHTML='&lt;span class=icon&gt;⚡&lt;/span&gt;'">WinPEAS</div>
+                <div class="skill-tag reveal reveal-delay-2"><img class="tool-icon" src="https://cdn.simpleicons.org/hashcat" alt="" onerror="this.outerHTML='&lt;span class=icon&gt;⚡&lt;/span&gt;'">Hashcat</div>
+                <div class="skill-tag reveal reveal-delay-3"><img class="tool-icon" src="https://cdn.simpleicons.org/johntheripper" alt="" onerror="this.outerHTML='&lt;span class=icon&gt;⚡&lt;/span&gt;'">John the Ripper</div>
+                <div class="skill-tag reveal reveal-delay-3"><img class="tool-icon" src="https://cdn.simpleicons.org/python" alt="" onerror="this.outerHTML='&lt;span class=icon&gt;⚡&lt;/span&gt;'">Python</div>
+                <div class="skill-tag reveal reveal-delay-4"><img class="tool-icon" src="https://cdn.simpleicons.org/gnubash" alt="" onerror="this.outerHTML='&lt;span class=icon&gt;⚡&lt;/span&gt;'">Bash</div>
+                <div class="skill-tag reveal reveal-delay-4"><img class="tool-icon" src="https://cdn.simpleicons.org/kalilinux" alt="" onerror="this.outerHTML='&lt;span class=icon&gt;⚡&lt;/span&gt;'">Kali Linux</div>
+                <div class="skill-tag reveal reveal-delay-1"><img class="tool-icon" src="https://cdn.simpleicons.org/owasp" alt="" onerror="this.outerHTML='&lt;span class=icon&gt;⚡&lt;/span&gt;'">OWASP Top 10</div>
                 <div class="skill-tag reveal reveal-delay-2"><span class="icon">⚡</span>Active Directory</div>
+                <div class="skill-tag reveal reveal-delay-2"><img class="tool-icon" src="https://cdn.simpleicons.org/docker" alt="" onerror="this.outerHTML='&lt;span class=icon&gt;⚡&lt;/span&gt;'">Docker</div>
+                <div class="skill-tag reveal reveal-delay-3"><img class="tool-icon" src="https://cdn.simpleicons.org/git" alt="" onerror="this.outerHTML='&lt;span class=icon&gt;⚡&lt;/span&gt;'">Git</div>
+                <div class="skill-tag reveal reveal-delay-3"><img class="tool-icon" src="https://cdn.simpleicons.org/postman" alt="" onerror="this.outerHTML='&lt;span class=icon&gt;⚡&lt;/span&gt;'">Postman</div>
+                <div class="skill-tag reveal reveal-delay-4"><img class="tool-icon" src="https://cdn.simpleicons.org/visualstudiocode" alt="" onerror="this.outerHTML='&lt;span class=icon&gt;⚡&lt;/span&gt;'">VS Code</div>
+                <div class="skill-tag reveal reveal-delay-4"><img class="tool-icon" src="https://cdn.simpleicons.org/linux" alt="" onerror="this.outerHTML='&lt;span class=icon&gt;⚡&lt;/span&gt;'">Linux</div>
+                <div class="skill-tag reveal reveal-delay-1"><img class="tool-icon" src="https://cdn.simpleicons.org/shodan" alt="" onerror="this.outerHTML='&lt;span class=icon&gt;⚡&lt;/span&gt;'">Shodan</div>
             </div>
         </div>
     </section>
@@ -2166,7 +2183,7 @@
     <footer>
         <p>
             © 2026 <span class="highlight">Mursalin Molla</span> —
-            Built with precision · India
+            Built with precision · Kolkata, India
         </p>
     </footer>
 

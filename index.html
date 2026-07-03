@@ -1842,8 +1842,8 @@
                     </div>
                 </a>
 
-                <!-- YouTube: ed6ZWtaX7fo -->
-                <a href="https://youtu.be/hXY9bqgBh3Q?si=IpZLtbr9dB1RJeTr" target="_blank" rel="noopener" class="walk-card reveal reveal-delay-3">
+                <!-- YouTube: ed6ZWtaX7fo - updated link -->
+                <a href="https://youtu.be/hXY9bqgBh3Q?si=LWoYaGa0tHdz_-IN" target="_blank" rel="noopener" class="walk-card reveal reveal-delay-3">
                     <div class="walk-thumb">
                         <img src="https://img.youtube.com/vi/ed6ZWtaX7fo/hqdefault.jpg" alt="HTB Walkthrough Thumbnail">
                         <span class="walk-type youtube">YouTube</span>
@@ -2408,7 +2408,7 @@
                         if (dist < 140) {
                             const alpha = 0.06 * (1 - dist / 140);
                             ctx.beginPath();
-                            ctx.moveTo(particles[i].x, particles[i].y);
+                            ctx.moveTo(particles[i].x, particles[j].y);
                             ctx.lineTo(particles[j].x, particles[j].y);
                             ctx.strokeStyle = `rgba(229, 9, 20, ${alpha})`;
                             ctx.lineWidth = 0.6;

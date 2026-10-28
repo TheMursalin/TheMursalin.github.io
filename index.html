@@ -11,7 +11,7 @@
            ROOT VARIABLES
            ═══════════════════════════════════════════════════ */
         :root {
-            --bg-primary: #050505;
+            --bg-primary: #000000;
             --bg-secondary: #0F0F0F;
             --bg-surface: #171717;
             --bg-card: #1A1A1A;
@@ -55,7 +55,7 @@
 
         body {
             font-family: var(--font);
-            background: var(--bg-primary);
+            background: #000;
             color: var(--text-white);
             line-height: 1.6;
             overflow-x: hidden;
@@ -78,13 +78,48 @@
         }
 
         /* ═══════════════════════════════════════════════════
+           SPACE BACKGROUND - GLOBAL MOVING RED DOT CANVAS
+           ═══════════════════════════════════════════════════ */
+        #bg-dots {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 0;
+            pointer-events: none;
+            background: #000;
+        }
+
+        /* All content layers sit on top of the moving dots */
+        #hero,
+        #about,
+        #skills,
+        #certifications,
+        #experience,
+        #walkthroughs,
+        #projects,
+        #achievements,
+        #contact {
+            position: relative;
+            z-index: 1;
+            background: transparent !important;
+        }
+
+        footer {
+            position: relative;
+            z-index: 1;
+            background: transparent;
+        }
+
+        /* ═══════════════════════════════════════════════════
            SCROLLBAR
            ═══════════════════════════════════════════════════ */
         ::-webkit-scrollbar {
             width: 6px;
         }
         ::-webkit-scrollbar-track {
-            background: var(--bg-primary);
+            background: #000;
         }
         ::-webkit-scrollbar-thumb {
             background: var(--red-primary);
@@ -180,7 +215,7 @@
             right: 0;
             z-index: 1000;
             padding: 16px 32px;
-            background: rgba(5, 5, 5, 0.6);
+            background: rgba(0, 0, 0, 0.6);
             backdrop-filter: blur(24px) saturate(1.4);
             -webkit-backdrop-filter: blur(24px) saturate(1.4);
             border-bottom: 1px solid var(--border-subtle);
@@ -190,7 +225,7 @@
             justify-content: space-between;
         }
         .navbar.scrolled {
-            background: rgba(5, 5, 5, 0.85);
+            background: rgba(0, 0, 0, 0.85);
             padding: 12px 32px;
         }
 
@@ -299,7 +334,7 @@
                 right: -100%;
                 width: 280px;
                 height: 100vh;
-                background: var(--bg-secondary);
+                background: #0F0F0F;
                 flex-direction: column;
                 justify-content: center;
                 padding: 40px 32px;
@@ -334,40 +369,9 @@
             display: flex;
             align-items: center;
             overflow: hidden;
-            background: var(--bg-primary);
             padding: 120px 0 80px;
         }
 
-        /* Animated background grid */
-        .hero-grid {
-            position: absolute;
-            inset: 0;
-            z-index: 0;
-            opacity: 0.04;
-            background-image:
-                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-            background-size: 60px 60px;
-            animation: gridMove 20s linear infinite;
-        }
-        @keyframes gridMove {
-            0% {
-                transform: translate(0, 0);
-            }
-            100% {
-                transform: translate(60px, 60px);
-            }
-        }
-
-        /* Hero particles canvas */
-        #hero-particles {
-            position: absolute;
-            inset: 0;
-            z-index: 1;
-            pointer-events: none;
-        }
-
-        /* Hero content */
         .hero-content {
             position: relative;
             z-index: 2;
@@ -507,7 +511,6 @@
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
         }
 
-        /* Hero portrait */
         .hero-visual {
             position: relative;
             display: flex;
@@ -527,7 +530,6 @@
             justify-content: center;
         }
 
-        /* Glow rings */
         .portrait-glow {
             position: absolute;
             inset: -40px;
@@ -622,7 +624,6 @@
             z-index: 3;
         }
 
-        /* Floating particles around portrait */
         .float-particle {
             position: absolute;
             width: 4px;
@@ -721,10 +722,6 @@
         /* ═══════════════════════════════════════════════════
            ABOUT
            ═══════════════════════════════════════════════════ */
-        #about {
-            background: var(--bg-secondary);
-        }
-
         .about-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -788,10 +785,6 @@
         /* ═══════════════════════════════════════════════════
            SKILLS
            ═══════════════════════════════════════════════════ */
-        #skills {
-            background: var(--bg-primary);
-        }
-
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
@@ -840,10 +833,6 @@
         /* ═══════════════════════════════════════════════════
            CERTIFICATIONS
            ═══════════════════════════════════════════════════ */
-        #certifications {
-            background: var(--bg-secondary);
-        }
-
         .certs-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -892,10 +881,6 @@
         /* ═══════════════════════════════════════════════════
            EXPERIENCE
            ═══════════════════════════════════════════════════ */
-        #experience {
-            background: var(--bg-primary);
-        }
-
         .timeline {
             display: flex;
             flex-direction: column;
@@ -930,7 +915,7 @@
             width: 12px;
             height: 12px;
             border-radius: 50%;
-            background: var(--bg-primary);
+            background: #000;
             border: 2px solid var(--red-primary);
             box-shadow: 0 0 20px var(--red-glow);
         }
@@ -978,10 +963,6 @@
         /* ═══════════════════════════════════════════════════
            WALKTHROUGHS
            ═══════════════════════════════════════════════════ */
-        #walkthroughs {
-            background: var(--bg-secondary);
-        }
-
         .walkthroughs-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -1009,7 +990,7 @@
         .walk-thumb {
             position: relative;
             overflow: hidden;
-            background: var(--bg-primary);
+            background: #000;
             aspect-ratio: 16 / 9;
         }
         .walk-thumb img {
@@ -1036,9 +1017,6 @@
             border-radius: 999px;
             z-index: 2;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-        }
-        .walk-type.github {
-            background: #333;
         }
         .walk-type.youtube {
             background: #FF0000;
@@ -1080,12 +1058,8 @@
         }
 
         /* ═══════════════════════════════════════════════════
-           PROJECTS (with video embeds + fallback)
+           PROJECTS
            ═══════════════════════════════════════════════════ */
-        #projects {
-            background: var(--bg-secondary);
-        }
-
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
@@ -1110,7 +1084,7 @@
         .project-video {
             position: relative;
             aspect-ratio: 16 / 9;
-            background: var(--bg-primary);
+            background: #000;
             overflow: hidden;
             display: flex;
             align-items: center;
@@ -1123,7 +1097,6 @@
             display: block;
         }
 
-        /* Video fallback overlay — shows when YouTube embed fails */
         .video-fallback {
             position: absolute;
             inset: 0;
@@ -1131,7 +1104,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            background: var(--bg-primary);
+            background: #000;
             padding: 20px;
             text-align: center;
             z-index: 5;
@@ -1170,7 +1143,6 @@
             box-shadow: 0 0 30px var(--red-glow-strong);
         }
 
-        /* Sound toggle button */
         .sound-toggle {
             position: absolute;
             bottom: 16px;
@@ -1272,10 +1244,6 @@
         /* ═══════════════════════════════════════════════════
            ACHIEVEMENTS
            ═══════════════════════════════════════════════════ */
-        #achievements {
-            background: var(--bg-primary);
-        }
-
         .achievements-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -1311,10 +1279,9 @@
         }
 
         /* ═══════════════════════════════════════════════════
-           CONTACT / RESUME
+           CONTACT
            ═══════════════════════════════════════════════════ */
         #contact {
-            background: var(--bg-secondary);
             text-align: center;
         }
 
@@ -1394,7 +1361,6 @@
            FOOTER
            ═══════════════════════════════════════════════════ */
         footer {
-            background: var(--bg-primary);
             border-top: 1px solid var(--border-subtle);
             padding: 32px 24px;
             text-align: center;
@@ -1420,18 +1386,10 @@
             opacity: 1;
             transform: translateY(0);
         }
-        .reveal-delay-1 {
-            transition-delay: 0.1s;
-        }
-        .reveal-delay-2 {
-            transition-delay: 0.2s;
-        }
-        .reveal-delay-3 {
-            transition-delay: 0.3s;
-        }
-        .reveal-delay-4 {
-            transition-delay: 0.4s;
-        }
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
 
         /* ═══════════════════════════════════════════════════
            RESPONSIVE
@@ -1520,11 +1478,8 @@
                 opacity: 1;
                 transform: none;
             }
-            #hero-particles {
+            #bg-dots {
                 display: none;
-            }
-            .hero-grid {
-                animation: none;
             }
             .portrait-glow {
                 animation: none;
@@ -1542,6 +1497,9 @@
     </style>
 </head>
 <body>
+
+    <!-- ═══ GLOBAL MOVING SPACE DOTS ═══ -->
+    <canvas id="bg-dots"></canvas>
 
     <!-- ═══ CURSOR GLOW ═══ -->
     <div id="cursor-glow"></div>
@@ -1572,9 +1530,6 @@
 
     <!-- ═══ HERO ═══ -->
     <section id="hero">
-        <div class="hero-grid"></div>
-        <canvas id="hero-particles"></canvas>
-
         <div class="hero-content">
             <div class="hero-text">
                 <div class="hero-badge">
@@ -1609,7 +1564,6 @@
                     <div class="portrait-ring"></div>
                     <div class="portrait-ring"></div>
 
-                    <!-- Floating particles -->
                     <div class="float-particle"></div>
                     <div class="float-particle"></div>
                     <div class="float-particle"></div>
@@ -1776,10 +1730,9 @@
 
             <div class="timeline" style="margin-top:8px;">
 
-                <!-- NEW: Ethical Hacker at WebAsha Technologies -->
                 <div class="tl-item reveal reveal-delay-1">
                     <div class="tl-date">Jul 2026 – Present · 1 mo</div>
-                    <div class="tl-role">Ethical Hacker</div>
+                    <div class="tl-role">CyberSecurity Engineer</div>
                     <div class="tl-company">WebAsha Technologies · Full-time · Pune City, Maharashtra, India · On-site</div>
                     <ul class="tl-desc">
                         <li>Internet Security</li>
@@ -1813,7 +1766,6 @@
                     </ul>
                 </div>
 
-                <!-- UPDATED: Root With Mursalin (was Security Content Creator) -->
                 <div class="tl-item reveal reveal-delay-3">
                     <div class="tl-date">Apr 2026 – Present · 4 mos</div>
                     <div class="tl-role">Root With Mursalin</div>
@@ -1845,7 +1797,6 @@
 
             <div class="walkthroughs-grid" style="margin-top:8px;">
 
-                <!-- Walkthrough 1 -->
                 <a href="https://youtu.be/CbNCeQfuSRk" target="_blank" rel="noopener" class="walk-card reveal reveal-delay-1">
                     <div class="walk-thumb">
                         <img src="https://img.youtube.com/vi/CbNCeQfuSRk/hqdefault.jpg" alt="HTB Walkthrough Thumbnail">
@@ -1858,7 +1809,6 @@
                     </div>
                 </a>
 
-                <!-- Walkthrough 2 -->
                 <a href="https://youtu.be/pGQYtUFq6OE" target="_blank" rel="noopener" class="walk-card reveal reveal-delay-2">
                     <div class="walk-thumb">
                         <img src="https://img.youtube.com/vi/pGQYtUFq6OE/hqdefault.jpg" alt="HTB Walkthrough Thumbnail">
@@ -1871,7 +1821,6 @@
                     </div>
                 </a>
 
-                <!-- Walkthrough 3 -->
                 <a href="https://youtu.be/BhVzavZvAFw" target="_blank" rel="noopener" class="walk-card reveal reveal-delay-3">
                     <div class="walk-thumb">
                         <img src="https://img.youtube.com/vi/BhVzavZvAFw/hqdefault.jpg" alt="HTB Walkthrough Thumbnail">
@@ -1884,7 +1833,6 @@
                     </div>
                 </a>
 
-                <!-- Walkthrough 4 -->
                 <a href="https://youtu.be/ep8ehC_FRmE" target="_blank" rel="noopener" class="walk-card reveal reveal-delay-4">
                     <div class="walk-thumb">
                         <img src="https://img.youtube.com/vi/ep8ehC_FRmE/hqdefault.jpg" alt="HTB Walkthrough Thumbnail">
@@ -1897,7 +1845,6 @@
                     </div>
                 </a>
 
-                <!-- Walkthrough 5 -->
                 <a href="https://youtu.be/3d-S2Is5DrE" target="_blank" rel="noopener" class="walk-card reveal reveal-delay-1">
                     <div class="walk-thumb">
                         <img src="https://img.youtube.com/vi/3d-S2Is5DrE/hqdefault.jpg" alt="HTB Walkthrough Thumbnail">
@@ -1910,9 +1857,8 @@
                     </div>
                 </a>
 
-                <!-- More Walkthroughs (Channel + GitHub) -->
                 <div class="walk-card reveal reveal-delay-2" style="border-color: rgba(229, 9, 20, 0.15);">
-                    <div class="walk-thumb" style="background: var(--bg-primary); display: flex; align-items: center; justify-content: center; aspect-ratio: 16/9;">
+                    <div class="walk-thumb" style="background: #000; display: flex; align-items: center; justify-content: center; aspect-ratio: 16/9;">
                         <span style="font-size: 2.5rem; opacity: 0.2;">📂</span>
                         <span class="walk-type" style="background: var(--bg-surface); color: var(--text-secondary);">More</span>
                     </div>
@@ -1936,7 +1882,7 @@
         </div>
     </section>
 
-    <!-- ═══ PROJECTS (with video embeds + fallback) ═══ -->
+    <!-- ═══ PROJECTS ═══ -->
     <section id="projects" class="section-padding">
         <div class="container">
             <div class="reveal">
@@ -1952,7 +1898,6 @@
 
             <div class="projects-grid" style="margin-top:8px;">
 
-                <!-- BAC Hunter -->
                 <div class="project-card reveal reveal-delay-1">
                     <div class="project-video">
                         <iframe
@@ -1990,7 +1935,6 @@
                     </div>
                 </div>
 
-                <!-- SSRF Killer -->
                 <div class="project-card reveal reveal-delay-2">
                     <div class="project-video">
                         <iframe
@@ -2028,7 +1972,6 @@
                     </div>
                 </div>
 
-                <!-- WebScout -->
                 <div class="project-card reveal reveal-delay-3">
                     <div class="project-video">
                         <iframe
@@ -2066,9 +2009,8 @@
                     </div>
                 </div>
 
-                <!-- Network Scanner -->
                 <div class="project-card reveal reveal-delay-4">
-                    <div class="project-video" style="background: var(--bg-primary); display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 8px;">
+                    <div class="project-video" style="background: #000; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 8px;">
                         <span style="font-size: 2.5rem; opacity: 0.15;">📡</span>
                         <span style="font-size: 0.7rem; color: var(--text-muted);">Demo coming soon</span>
                     </div>
@@ -2132,7 +2074,7 @@
         </div>
     </section>
 
-    <!-- ═══ CONTACT / RESUME ═══ -->
+    <!-- ═══ CONTACT ═══ -->
     <section id="contact" class="section-padding">
         <div class="container">
             <div class="contact-content reveal">
@@ -2184,12 +2126,210 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
 
-            // ─── CURSOR GLOW ───
+            // ═══════════════════════════════════════════════
+            // GLOBAL MOVING SPACE DOTS — 3 PARALLAX LAYERS
+            // ═══════════════════════════════════════════════
+            const bgCanvas = document.getElementById('bg-dots');
+            const bgCtx = bgCanvas.getContext('2d');
+            let bgW = 0, bgH = 0;
+            let layers = [];
+            let streaks = [];
+
+            function resizeBgCanvas() {
+                bgW = window.innerWidth;
+                bgH = window.innerHeight;
+                const dpr = Math.min(window.devicePixelRatio || 1, 2);
+                bgCanvas.width = bgW * dpr;
+                bgCanvas.height = bgH * dpr;
+                bgCanvas.style.width = bgW + 'px';
+                bgCanvas.style.height = bgH + 'px';
+                bgCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+            }
+
+            function createDot(layerIndex) {
+                // Layer-specific profiles for clear parallax depth
+                const profiles = [
+                    // Background — many tiny slow dots
+                    { sizeMin: 0.3, sizeMax: 0.9, speedMin: 0.10, speedMax: 0.25, alphaMin: 0.35, alphaMax: 0.65, glow: 4,  trail: 0 },
+                    // Midground — medium dots
+                    { sizeMin: 0.7, sizeMax: 1.4, speedMin: 0.25, speedMax: 0.55, alphaMin: 0.55, alphaMax: 0.85, glow: 8,  trail: 0 },
+                    // Foreground — larger brighter dots with trails
+                    { sizeMin: 1.1, sizeMax: 2.0, speedMin: 0.55, speedMax: 1.05, alphaMin: 0.70, alphaMax: 1.00, glow: 14, trail: 6 }
+                ];
+                const p = profiles[layerIndex];
+
+                // Random direction, biased with a gentle drift so dots clearly move
+                const angle = Math.random() * Math.PI * 2;
+                const speed = p.speedMin + Math.random() * (p.speedMax - p.speedMin);
+                const vx = Math.cos(angle) * speed;
+                const vy = Math.sin(angle) * speed;
+
+                return {
+                    x: Math.random() * bgW,
+                    y: Math.random() * bgH,
+                    vx,
+                    vy,
+                    r: p.sizeMin + Math.random() * (p.sizeMax - p.sizeMin),
+                    baseAlpha: p.alphaMin + Math.random() * (p.alphaMax - p.alphaMin),
+                    twinklePhase: Math.random() * Math.PI * 2,
+                    twinkleSpeed: 0.02 + Math.random() * 0.02,
+                    glow: p.glow,
+                    trail: p.trail,
+                    trailHistory: [],
+                    layer: layerIndex
+                };
+            }
+
+            function initBgDots() {
+                layers = [[], [], []];
+                const counts = [70, 45, 22]; // far → near
+                for (let l = 0; l < 3; l++) {
+                    for (let i = 0; i < counts[l]; i++) {
+                        layers[l].push(createDot(l));
+                    }
+                }
+                streaks = [];
+            }
+
+            function spawnStreak() {
+                // Occasionally spawn a fast moving streak (shooting dot)
+                const fromLeft = Math.random() > 0.5;
+                const y = Math.random() * bgH;
+                streaks.push({
+                    x: fromLeft ? -20 : bgW + 20,
+                    y: y,
+                    vx: (fromLeft ? 1 : -1) * (5 + Math.random() * 4),
+                    vy: (Math.random() - 0.5) * 1.2,
+                    life: 1.0,
+                    r: 1.4 + Math.random() * 0.8,
+                    trailLen: 60 + Math.random() * 60
+                });
+            }
+
+            function drawBgDots() {
+                bgCtx.clearRect(0, 0, bgW, bgH);
+
+                // Draw layers back-to-front
+                for (let l = 0; l < layers.length; l++) {
+                    for (const d of layers[l]) {
+                        // Movement
+                        d.x += d.vx;
+                        d.y += d.vy;
+                        d.twinklePhase += d.twinkleSpeed;
+
+                        // Wrap with padding so dots re-enter smoothly
+                        const pad = 30;
+                        if (d.x < -pad) d.x = bgW + pad;
+                        else if (d.x > bgW + pad) d.x = -pad;
+                        if (d.y < -pad) d.y = bgH + pad;
+                        else if (d.y > bgH + pad) d.y = -pad;
+
+                        // Twinkle
+                        const twinkle = 0.5 + 0.5 * Math.sin(d.twinklePhase);
+                        const alpha = d.baseAlpha * (0.45 + 0.55 * twinkle);
+
+                        // Trail for foreground layer
+                        if (d.trail > 0) {
+                            d.trailHistory.push({ x: d.x, y: d.y });
+                            if (d.trailHistory.length > d.trail) d.trailHistory.shift();
+
+                            for (let t = 0; t < d.trailHistory.length - 1; t++) {
+                                const seg = d.trailHistory[t];
+                                const tAlpha = alpha * (t / d.trailHistory.length) * 0.35;
+                                bgCtx.beginPath();
+                                bgCtx.arc(seg.x, seg.y, d.r * (t / d.trailHistory.length), 0, Math.PI * 2);
+                                bgCtx.fillStyle = `rgba(229, 9, 20, ${tAlpha})`;
+                                bgCtx.fill();
+                            }
+                        }
+
+                        // Glowing core
+                        bgCtx.shadowBlur = d.glow;
+                        bgCtx.shadowColor = `rgba(229, 9, 20, ${alpha})`;
+                        bgCtx.beginPath();
+                        bgCtx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
+                        bgCtx.fillStyle = `rgba(255, 80, 80, ${alpha})`;
+                        bgCtx.fill();
+                    }
+                }
+
+                // Draw streaks (occasional fast moving shooting dots)
+                for (let i = streaks.length - 1; i >= 0; i--) {
+                    const s = streaks[i];
+                    s.x += s.vx;
+                    s.y += s.vy;
+                    s.life -= 0.008;
+
+                    if (s.life <= 0 || s.x < -80 || s.x > bgW + 80) {
+                        streaks.splice(i, 1);
+                        continue;
+                    }
+
+                    // Draw trail
+                    const trailSteps = 12;
+                    for (let t = 0; t < trailSteps; t++) {
+                        const frac = t / trailSteps;
+                        const tx = s.x - s.vx * frac * (s.trailLen / 20);
+                        const ty = s.y - s.vy * frac * (s.trailLen / 20);
+                        const tAlpha = s.life * (1 - frac) * 0.55;
+                        bgCtx.beginPath();
+                        bgCtx.arc(tx, ty, s.r * (1 - frac * 0.7), 0, Math.PI * 2);
+                        bgCtx.fillStyle = `rgba(255, 60, 60, ${tAlpha})`;
+                        bgCtx.fill();
+                    }
+
+                    // Head glow
+                    bgCtx.shadowBlur = 18;
+                    bgCtx.shadowColor = `rgba(229, 9, 20, ${s.life})`;
+                    bgCtx.beginPath();
+                    bgCtx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+                    bgCtx.fillStyle = `rgba(255, 100, 100, ${s.life})`;
+                    bgCtx.fill();
+                }
+
+                bgCtx.shadowBlur = 0;
+
+                // Random streak spawner
+                if (Math.random() < 0.008 && streaks.length < 3) {
+                    spawnStreak();
+                }
+
+                requestAnimationFrame(drawBgDots);
+            }
+
+            resizeBgCanvas();
+            initBgDots();
+
+            window.addEventListener('resize', () => {
+                resizeBgCanvas();
+                initBgDots();
+            });
+
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            if (!prefersReducedMotion) {
+                drawBgDots();
+            } else {
+                // Static frame for reduced-motion users
+                for (const layer of layers) {
+                    for (const d of layer) {
+                        bgCtx.shadowBlur = d.glow;
+                        bgCtx.shadowColor = `rgba(229, 9, 20, ${d.baseAlpha})`;
+                        bgCtx.beginPath();
+                        bgCtx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
+                        bgCtx.fillStyle = `rgba(255, 80, 80, ${d.baseAlpha})`;
+                        bgCtx.fill();
+                    }
+                }
+                bgCtx.shadowBlur = 0;
+            }
+
+            // ═══════════════════════════════════════════════
+            // CURSOR GLOW
+            // ═══════════════════════════════════════════════
             const glow = document.getElementById('cursor-glow');
-            let mouseX = -9999,
-                mouseY = -9999;
-            let glowX = -9999,
-                glowY = -9999;
+            let mouseX = -9999, mouseY = -9999;
+            let glowX = -9999, glowY = -9999;
 
             document.addEventListener('mousemove', (e) => {
                 mouseX = e.clientX;
@@ -2204,8 +2344,9 @@
             }
             animateGlow();
 
-            // ─── BUTTERY SMOOTH SCROLL ───
-            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            // ═══════════════════════════════════════════════
+            // BUTTERY SMOOTH SCROLL
+            // ═══════════════════════════════════════════════
             const isFinePointer = window.matchMedia('(pointer: fine)').matches;
 
             if (!prefersReducedMotion && isFinePointer) {
@@ -2271,7 +2412,9 @@
                 }, { passive: true });
             }
 
-            // ─── NAV TOGGLE ───
+            // ═══════════════════════════════════════════════
+            // NAV TOGGLE
+            // ═══════════════════════════════════════════════
             const toggle = document.getElementById('navToggle');
             const links = document.getElementById('navLinks');
 
@@ -2289,17 +2432,17 @@
                 });
             });
 
-            // ─── NAV SCROLL EFFECT ───
+            // ═══════════════════════════════════════════════
+            // NAV SCROLL EFFECT
+            // ═══════════════════════════════════════════════
             const navbar = document.getElementById('navbar');
-            let lastScroll = 0;
-
             window.addEventListener('scroll', () => {
-                const y = window.scrollY;
-                navbar.classList.toggle('scrolled', y > 40);
-                lastScroll = y;
+                navbar.classList.toggle('scrolled', window.scrollY > 40);
             }, { passive: true });
 
-            // ─── ACTIVE NAV LINK ───
+            // ═══════════════════════════════════════════════
+            // ACTIVE NAV LINK
+            // ═══════════════════════════════════════════════
             const sections = document.querySelectorAll('section[id]');
             const navAnchors = document.querySelectorAll('.nav-links a:not(.nav-cta)');
 
@@ -2316,9 +2459,10 @@
             window.addEventListener('scroll', updateActiveNav, { passive: true });
             updateActiveNav();
 
-            // ─── REVEAL ON SCROLL ───
+            // ═══════════════════════════════════════════════
+            // REVEAL ON SCROLL
+            // ═══════════════════════════════════════════════
             const revealEls = document.querySelectorAll('.reveal');
-
             const revealObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -2329,98 +2473,17 @@
                 threshold: 0.08,
                 rootMargin: '0px 0px -40px 0px'
             });
-
             revealEls.forEach(el => revealObserver.observe(el));
 
-            // ─── HERO PARTICLES ───
-            const canvas = document.getElementById('hero-particles');
-            const ctx = canvas.getContext('2d');
-            let w, h;
-            let particles = [];
-            const COUNT = 80;
-
-            function resizeCanvas() {
-                const rect = canvas.parentElement.getBoundingClientRect();
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
-                w = canvas.width;
-                h = canvas.height;
-            }
-
-            function initParticles() {
-                particles = [];
-                for (let i = 0; i < COUNT; i++) {
-                    particles.push({
-                        x: Math.random() * w,
-                        y: Math.random() * h,
-                        vx: (Math.random() - 0.5) * 0.25,
-                        vy: (Math.random() - 0.5) * 0.25,
-                        r: Math.random() * 2 + 1,
-                        a: Math.random() * 0.4 + 0.05,
-                    });
-                }
-            }
-
-            function drawParticles() {
-                ctx.clearRect(0, 0, w, h);
-
-                for (const p of particles) {
-                    p.x += p.vx;
-                    p.y += p.vy;
-
-                    if (p.x < 0 || p.x > w) p.vx *= -1;
-                    if (p.y < 0 || p.y > h) p.vy *= -1;
-
-                    ctx.beginPath();
-                    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-                    ctx.fillStyle = `rgba(229, 9, 20, ${p.a})`;
-                    ctx.fill();
-                }
-
-                for (let i = 0; i < particles.length; i++) {
-                    for (let j = i + 1; j < particles.length; j++) {
-                        const dx = particles[i].x - particles[j].x;
-                        const dy = particles[i].y - particles[j].y;
-                        const dist = Math.sqrt(dx * dx + dy * dy);
-                        if (dist < 140) {
-                            const alpha = 0.06 * (1 - dist / 140);
-                            ctx.beginPath();
-                            ctx.moveTo(particles[i].x, particles[j].y);
-                            ctx.lineTo(particles[j].x, particles[j].y);
-                            ctx.strokeStyle = `rgba(229, 9, 20, ${alpha})`;
-                            ctx.lineWidth = 0.6;
-                            ctx.stroke();
-                        }
-                    }
-                }
-
-                requestAnimationFrame(drawParticles);
-            }
-
-            function initParticlesSystem() {
-                resizeCanvas();
-                initParticles();
-                drawParticles();
-            }
-
-            window.addEventListener('resize', () => {
-                resizeCanvas();
-                initParticles();
-            });
-
-            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                initParticlesSystem();
-            }
-
-            // ─── PORTRAIT PARALLAX ───
+            // ═══════════════════════════════════════════════
+            // PORTRAIT PARALLAX
+            // ═══════════════════════════════════════════════
             const frame = document.getElementById('portraitFrame');
             const img = document.getElementById('portraitImg');
 
             if (frame && img) {
-                let px = 0,
-                    py = 0;
-                let tx = 0,
-                    ty = 0;
+                let px = 0, py = 0;
+                let tx = 0, ty = 0;
 
                 document.addEventListener('mousemove', (e) => {
                     const rect = frame.getBoundingClientRect();
@@ -2440,14 +2503,16 @@
                     requestAnimationFrame(animateParallax);
                 }
 
-                if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                if (!prefersReducedMotion) {
                     animateParallax();
                 }
             }
 
         });
 
-        // ─── SOUND TOGGLE ───
+        // ═══════════════════════════════════════════════
+        // SOUND TOGGLE (project videos)
+        // ═══════════════════════════════════════════════
         function toggleSound(btn) {
             const videoContainer = btn.closest('.project-video');
             const iframe = videoContainer.querySelector('iframe');
@@ -2464,27 +2529,12 @@
                 src = src.replace('mute=0', 'mute=1');
                 icon.textContent = '🔇';
             } else {
-                if (src.includes('?')) {
-                    src += '&mute=1';
-                } else {
-                    src += '?mute=1';
-                }
+                src += (src.includes('?') ? '&' : '?') + 'mute=1';
                 icon.textContent = '🔇';
             }
 
             iframe.src = src;
         }
-
-        // ─── FALLBACK: detect if iframe fails to load ───
-        document.querySelectorAll('.project-video iframe').forEach(iframe => {
-            setTimeout(() => {
-                const container = iframe.closest('.project-video');
-                const fallback = container.querySelector('.video-fallback');
-                if (iframe.style.display !== 'none') {
-                    // Check if video loaded
-                }
-            }, 5000);
-        });
     </script>
 
 </body>

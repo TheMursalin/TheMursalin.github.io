@@ -1256,6 +1256,18 @@
             gap: 10px;
             color: var(--red-accent);
         }
+        .project-links-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            align-items: center;
+        }
+        .project-link.watch-link {
+            color: var(--text-secondary);
+        }
+        .project-link.watch-link:hover {
+            color: var(--red-primary);
+        }
 
         /* ═══════════════════════════════════════════════════
            ACHIEVEMENTS
@@ -1832,36 +1844,11 @@
             </div>
 
             <div class="walkthroughs-grid" style="margin-top:8px;">
-                <!-- Twiggy (GitHub) -->
-                <a href="https://github.com/TheMursalin/Twiggy" target="_blank" rel="noopener" class="walk-card reveal reveal-delay-1">
-                    <div class="walk-thumb">
-                        <img src="https://opengraph.githubassets.com/1/TheMursalin/Twiggy" alt="Twiggy Walkthrough" onerror="this.style.display='none'">
-                        <span class="walk-type github">GitHub</span>
-                    </div>
-                    <div class="walk-info">
-                        <div class="walk-name">Twiggy</div>
-                        <p class="walk-desc">Complete walkthrough of the Twiggy machine — enumeration, exploitation, and privilege escalation.</p>
-                        <span class="walk-link">View on GitHub →</span>
-                    </div>
-                </a>
 
-                <!-- Atom (GitHub) -->
-                <a href="https://github.com/TheMursalin/Atom" target="_blank" rel="noopener" class="walk-card reveal reveal-delay-2">
+                <!-- Walkthrough 1 -->
+                <a href="https://youtu.be/CbNCeQfuSRk" target="_blank" rel="noopener" class="walk-card reveal reveal-delay-1">
                     <div class="walk-thumb">
-                        <img src="https://opengraph.githubassets.com/1/TheMursalin/Atom" alt="Atom Walkthrough" onerror="this.style.display='none'">
-                        <span class="walk-type github">GitHub</span>
-                    </div>
-                    <div class="walk-info">
-                        <div class="walk-name">Atom</div>
-                        <p class="walk-desc">In-depth walkthrough of the Atom machine, covering initial access and root privilege escalation.</p>
-                        <span class="walk-link">View on GitHub →</span>
-                    </div>
-                </a>
-
-                <!-- YouTube: ed6ZWtaX7fo - updated link -->
-                <a href="https://youtu.be/hXY9bqgBh3Q?si=LWoYaGa0tHdz_-IN" target="_blank" rel="noopener" class="walk-card reveal reveal-delay-3">
-                    <div class="walk-thumb">
-                        <img src="https://img.youtube.com/vi/hXY9bqgBh3Q/hqdefault.jpg" alt="HTB Walkthrough Thumbnail">
+                        <img src="https://img.youtube.com/vi/CbNCeQfuSRk/hqdefault.jpg" alt="HTB Walkthrough Thumbnail">
                         <span class="walk-type youtube">YouTube</span>
                     </div>
                     <div class="walk-info">
@@ -1871,10 +1858,10 @@
                     </div>
                 </a>
 
-                <!-- YouTube: IuDbmnwIrLU -->
-                <a href="https://youtu.be/IuDbmnwIrLU?si=ATDng6Ip2k3O3fnt" target="_blank" rel="noopener" class="walk-card reveal reveal-delay-4">
+                <!-- Walkthrough 2 -->
+                <a href="https://youtu.be/pGQYtUFq6OE" target="_blank" rel="noopener" class="walk-card reveal reveal-delay-2">
                     <div class="walk-thumb">
-                        <img src="https://img.youtube.com/vi/IuDbmnwIrLU/hqdefault.jpg" alt="HTB Walkthrough Thumbnail">
+                        <img src="https://img.youtube.com/vi/pGQYtUFq6OE/hqdefault.jpg" alt="HTB Walkthrough Thumbnail">
                         <span class="walk-type youtube">YouTube</span>
                     </div>
                     <div class="walk-info">
@@ -1884,10 +1871,10 @@
                     </div>
                 </a>
 
-                <!-- YouTube: vE-ANh6wd0o -->
-                <a href="https://youtu.be/vE-ANh6wd0o?si=hudfG7fyk2Om1teS" target="_blank" rel="noopener" class="walk-card reveal reveal-delay-1">
+                <!-- Walkthrough 3 -->
+                <a href="https://youtu.be/BhVzavZvAFw" target="_blank" rel="noopener" class="walk-card reveal reveal-delay-3">
                     <div class="walk-thumb">
-                        <img src="https://img.youtube.com/vi/vE-ANh6wd0o/hqdefault.jpg" alt="HTB Walkthrough Thumbnail">
+                        <img src="https://img.youtube.com/vi/BhVzavZvAFw/hqdefault.jpg" alt="HTB Walkthrough Thumbnail">
                         <span class="walk-type youtube">YouTube</span>
                     </div>
                     <div class="walk-info">
@@ -1897,72 +1884,54 @@
                     </div>
                 </a>
 
-                <!-- YouTube Live: jOM0_SU5GkM -->
-                <a href="https://www.youtube.com/live/jOM0_SU5GkM?si=l9vYkpaoq1k1CrgL" target="_blank" rel="noopener" class="walk-card reveal reveal-delay-2">
+                <!-- Walkthrough 4 -->
+                <a href="https://youtu.be/ep8ehC_FRmE" target="_blank" rel="noopener" class="walk-card reveal reveal-delay-4">
                     <div class="walk-thumb">
-                        <img src="https://img.youtube.com/vi/jOM0_SU5GkM/hqdefault.jpg" alt="Live Walkthrough Thumbnail">
-                        <span class="walk-type youtube">YouTube Live</span>
+                        <img src="https://img.youtube.com/vi/ep8ehC_FRmE/hqdefault.jpg" alt="HTB Walkthrough Thumbnail">
+                        <span class="walk-type youtube">YouTube</span>
                     </div>
                     <div class="walk-info">
-                        <div class="walk-name">Live Walkthrough</div>
+                        <div class="walk-name">HTB Walkthrough</div>
                         <p class="walk-desc">Real-time problem-solving and explanation.</p>
                         <span class="walk-link">Watch on YouTube →</span>
                     </div>
                 </a>
 
-                <!-- YouTube Live: TYZWru34HBI -->
-                <a href="https://www.youtube.com/live/TYZWru34HBI?si=BF3FFuNqroD5uKjy" target="_blank" rel="noopener" class="walk-card reveal reveal-delay-3">
+                <!-- Walkthrough 5 -->
+                <a href="https://youtu.be/3d-S2Is5DrE" target="_blank" rel="noopener" class="walk-card reveal reveal-delay-1">
                     <div class="walk-thumb">
-                        <img src="https://img.youtube.com/vi/TYZWru34HBI/hqdefault.jpg" alt="Live Walkthrough Thumbnail">
-                        <span class="walk-type youtube">YouTube Live</span>
+                        <img src="https://img.youtube.com/vi/3d-S2Is5DrE/hqdefault.jpg" alt="HTB Walkthrough Thumbnail">
+                        <span class="walk-type youtube">YouTube</span>
                     </div>
                     <div class="walk-info">
-                        <div class="walk-name">Live Walkthrough</div>
+                        <div class="walk-name">HTB Walkthrough</div>
                         <p class="walk-desc">Vulnerability discovery and privilege escalation.</p>
                         <span class="walk-link">Watch on YouTube →</span>
                     </div>
                 </a>
 
-                <!-- YouTube Live: mJ_TcxeoEzA -->
-                <a href="https://www.youtube.com/live/mJ_TcxeoEzA?si=wy1XYc1yiHmd0H9X" target="_blank" rel="noopener" class="walk-card reveal reveal-delay-4">
-                    <div class="walk-thumb">
-                        <img src="https://img.youtube.com/vi/mJ_TcxeoEzA/hqdefault.jpg" alt="Live Walkthrough Thumbnail">
-                        <span class="walk-type youtube">YouTube Live</span>
-                    </div>
-                    <div class="walk-info">
-                        <div class="walk-name">Live Walkthrough</div>
-                        <p class="walk-desc">Detailed explanation of each step and technique used.</p>
-                        <span class="walk-link">Watch on YouTube →</span>
-                    </div>
-                </a>
-
-                <!-- YouTube Live: nUbwiHr50y4 -->
-                <a href="https://www.youtube.com/live/nUbwiHr50y4?si=TRNqwHJNyj28IVdg" target="_blank" rel="noopener" class="walk-card reveal reveal-delay-1">
-                    <div class="walk-thumb">
-                        <img src="https://img.youtube.com/vi/nUbwiHr50y4/hqdefault.jpg" alt="Live Walkthrough Thumbnail">
-                        <span class="walk-type youtube">YouTube Live</span>
-                    </div>
-                    <div class="walk-info">
-                        <div class="walk-name">Live Walkthrough</div>
-                        <p class="walk-desc">Full penetration testing methodology demonstrated live.</p>
-                        <span class="walk-link">Watch on YouTube →</span>
-                    </div>
-                </a>
-
-                <!-- View all on GitHub -->
-                <a href="https://github.com/TheMursalin?tab=repositories" target="_blank" rel="noopener" class="walk-card reveal reveal-delay-2" style="border-color: rgba(229, 9, 20, 0.15);">
+                <!-- More Walkthroughs (Channel + GitHub) -->
+                <div class="walk-card reveal reveal-delay-2" style="border-color: rgba(229, 9, 20, 0.15);">
                     <div class="walk-thumb" style="background: var(--bg-primary); display: flex; align-items: center; justify-content: center; aspect-ratio: 16/9;">
                         <span style="font-size: 2.5rem; opacity: 0.2;">📂</span>
                         <span class="walk-type" style="background: var(--bg-surface); color: var(--text-secondary);">More</span>
                     </div>
                     <div class="walk-info">
-                        <div class="walk-name">All Walkthroughs</div>
+                        <div class="walk-name">Want More Walkthroughs?</div>
                         <p class="walk-desc">
-                            Browse all my walkthroughs on GitHub — including Blackfield, StreamIO, Support, ServMon, Escape, and many more.
+                            Explore the full collection of CTF walkthroughs, live sessions, and writeups on my YouTube channel and GitHub.
                         </p>
-                        <span class="walk-link">View all on GitHub →</span>
+                        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:6px;">
+                            <a href="https://youtube.com/@rootwithmursalin" target="_blank" rel="noopener" class="walk-link" style="margin:0;">
+                                Visit Channel →
+                            </a>
+                            <a href="https://github.com/TheMursalin?tab=repositories" target="_blank" rel="noopener" class="walk-link" style="margin:0;">
+                                Visit GitHub →
+                            </a>
+                        </div>
                     </div>
-                </a>
+                </div>
+
             </div>
         </div>
     </section>
@@ -1986,21 +1955,18 @@
                 <!-- BAC Hunter -->
                 <div class="project-card reveal reveal-delay-1">
                     <div class="project-video">
-                        <!-- YouTube embed with nocookie domain and proper params -->
                         <iframe
-                        data-video-id="68uDFo_iLtg"
-                        class="yt-embed"
-                        title="BAC Hunter v3 Demo"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowfullscreen
-                        loading="lazy"
-                        onerror="this.style.display='none'; this.parentElement.querySelector('.video-fallback').classList.add('show');"
+                            src="https://www.youtube-nocookie.com/embed/68uDFo_iLtg?autoplay=1&mute=1&loop=1&playlist=68uDFo_iLtg&controls=1&modestbranding=1&rel=0&enablejsapi=1"
+                            title="BAC Hunter v3 Demo"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen
+                            loading="lazy"
+                            onerror="this.style.display='none'; this.parentElement.querySelector('.video-fallback').classList.add('show');"
                         ></iframe>
-                        <!-- Fallback overlay -->
                         <div class="video-fallback">
                             <div class="fallback-icon">▶️</div>
                             <div class="fallback-text">Video unavailable to embed</div>
-                            <a href="https://youtu.be/68uDFo_iLtg" target="_blank" rel="noopener" class="fallback-btn">Watch on YouTube →</a>
+                            <a href="https://youtu.be/68uDFo_iLtg?si=dq9VHlbCFDtNyNPy" target="_blank" rel="noopener" class="fallback-btn">Watch on YouTube →</a>
                         </div>
                         <button class="sound-toggle" onclick="toggleSound(this)" aria-label="Toggle sound">
                             <span class="sound-icon">🔇</span>
@@ -2017,7 +1983,10 @@
                         <div class="project-tech">
                             <span>Python</span><span>IDOR</span><span>JWT</span><span>Burp Suite</span>
                         </div>
-                        <a href="https://github.com/TheMursalin/bachunter" target="_blank" rel="noopener" class="project-link">View on GitHub →</a>
+                        <div class="project-links-row">
+                            <a href="https://github.com/TheMursalin/bachunter" target="_blank" rel="noopener" class="project-link">View on GitHub →</a>
+                            <a href="https://youtu.be/68uDFo_iLtg?si=dq9VHlbCFDtNyNPy" target="_blank" rel="noopener" class="project-link watch-link">Watch Demo →</a>
+                        </div>
                     </div>
                 </div>
 
@@ -2025,18 +1994,17 @@
                 <div class="project-card reveal reveal-delay-2">
                     <div class="project-video">
                         <iframe
-                        data-video-id="Ej9ZvKcZndE"
-                        class="yt-embed"
-                        title="SSRF Killer Demo"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowfullscreen
-                        loading="lazy"
-                        onerror="this.style.display='none'; this.parentElement.querySelector('.video-fallback').classList.add('show');"
+                            src="https://www.youtube-nocookie.com/embed/Ej9ZvKcZndE?autoplay=1&mute=1&loop=1&playlist=Ej9ZvKcZndE&controls=1&modestbranding=1&rel=0&enablejsapi=1"
+                            title="SSRF Killer Demo"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen
+                            loading="lazy"
+                            onerror="this.style.display='none'; this.parentElement.querySelector('.video-fallback').classList.add('show');"
                         ></iframe>
                         <div class="video-fallback">
                             <div class="fallback-icon">▶️</div>
                             <div class="fallback-text">Video unavailable to embed</div>
-                            <a href="https://youtu.be/Ej9ZvKcZndE" target="_blank" rel="noopener" class="fallback-btn">Watch on YouTube →</a>
+                            <a href="https://youtu.be/Ej9ZvKcZndE?si=LYcQbkg-7ibbSORj" target="_blank" rel="noopener" class="fallback-btn">Watch on YouTube →</a>
                         </div>
                         <button class="sound-toggle" onclick="toggleSound(this)" aria-label="Toggle sound">
                             <span class="sound-icon">🔇</span>
@@ -2053,7 +2021,10 @@
                         <div class="project-tech">
                             <span>Python</span><span>SSRF</span><span>OOB</span><span>300+ Payloads</span>
                         </div>
-                        <a href="https://github.com/TheMursalin/SSRF_Killer" target="_blank" rel="noopener" class="project-link">View on GitHub →</a>
+                        <div class="project-links-row">
+                            <a href="https://github.com/TheMursalin/SSRF_Killer" target="_blank" rel="noopener" class="project-link">View on GitHub →</a>
+                            <a href="https://youtu.be/Ej9ZvKcZndE?si=LYcQbkg-7ibbSORj" target="_blank" rel="noopener" class="project-link watch-link">Watch Demo →</a>
+                        </div>
                     </div>
                 </div>
 
@@ -2061,18 +2032,17 @@
                 <div class="project-card reveal reveal-delay-3">
                     <div class="project-video">
                         <iframe
-                        data-video-id="pw95gEUS_BM"
-                        class="yt-embed"
-                        title="WebScout Demo"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowfullscreen
-                        loading="lazy"
-                        onerror="this.style.display='none'; this.parentElement.querySelector('.video-fallback').classList.add('show');"
+                            src="https://www.youtube-nocookie.com/embed/pw95gEUS_BM?autoplay=1&mute=1&loop=1&playlist=pw95gEUS_BM&controls=1&modestbranding=1&rel=0&enablejsapi=1"
+                            title="WebScout Demo"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen
+                            loading="lazy"
+                            onerror="this.style.display='none'; this.parentElement.querySelector('.video-fallback').classList.add('show');"
                         ></iframe>
                         <div class="video-fallback">
                             <div class="fallback-icon">▶️</div>
                             <div class="fallback-text">Video unavailable to embed</div>
-                            <a href="https://youtu.be/pw95gEUS_BM" target="_blank" rel="noopener" class="fallback-btn">Watch on YouTube →</a>
+                            <a href="https://youtu.be/pw95gEUS_BM?si=tVMj5unW1MGbD9yz" target="_blank" rel="noopener" class="fallback-btn">Watch on YouTube →</a>
                         </div>
                         <button class="sound-toggle" onclick="toggleSound(this)" aria-label="Toggle sound">
                             <span class="sound-icon">🔇</span>
@@ -2089,7 +2059,10 @@
                         <div class="project-tech">
                             <span>Python</span><span>CVE DB</span><span>OSINT</span><span>HTML Reports</span>
                         </div>
-                        <a href="https://github.com/TheMursalin/webscout" target="_blank" rel="noopener" class="project-link">View on GitHub →</a>
+                        <div class="project-links-row">
+                            <a href="https://github.com/TheMursalin/webscout" target="_blank" rel="noopener" class="project-link">View on GitHub →</a>
+                            <a href="https://youtu.be/pw95gEUS_BM?si=tVMj5unW1MGbD9yz" target="_blank" rel="noopener" class="project-link watch-link">Watch Demo →</a>
+                        </div>
                     </div>
                 </div>
 
@@ -2110,7 +2083,9 @@
                         <div class="project-tech">
                             <span>Python</span><span>Nmap</span><span>Host Discovery</span><span>JSON</span>
                         </div>
-                        <a href="https://github.com/TheMursalin" target="_blank" rel="noopener" class="project-link">View on GitHub →</a>
+                        <div class="project-links-row">
+                            <a href="https://github.com/TheMursalin" target="_blank" rel="noopener" class="project-link">View on GitHub →</a>
+                        </div>
                     </div>
                 </div>
 
@@ -2499,25 +2474,6 @@
 
             iframe.src = src;
         }
-
-        // ─── BUILD YOUTUBE EMBED SRC ───
-        document.querySelectorAll('.yt-embed').forEach(iframe => {
-            const videoId = iframe.dataset.videoId;
-            const params = new URLSearchParams({
-                autoplay: '1',
-                mute: '1',
-                loop: '1',
-                playlist: videoId,
-                controls: '1',
-                modestbranding: '1',
-                rel: '0',
-                enablejsapi: '1'
-            });
-            if (window.location.protocol === 'http:' || window.location.protocol === 'https:') {
-                params.set('origin', window.location.origin);
-            }
-            iframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?${params.toString()}`;
-        });
 
         // ─── FALLBACK: detect if iframe fails to load ───
         document.querySelectorAll('.project-video iframe').forEach(iframe => {
